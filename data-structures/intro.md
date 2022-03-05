@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1487443194585522184?s=20
+
 Understanding data structures is essential for any software developer.
 
 The 8 must to know are:
