@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1496146534186029058?s=20
+
 Today I'd like to answer these questions:
 
 ↦ What are software design patterns?
