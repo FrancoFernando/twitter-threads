@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1497591541711482881?s=20
+
 There are 3 desirable properties for any distributed system:
 
 1. Consistency
