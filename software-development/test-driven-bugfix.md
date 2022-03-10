@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1473988209474424832?s=20&t=wUtTLoeMZXaddLg-JvLeNw
+
 I often develop prototyping code and I usually find hard to use a TDD approach.
 
 Why ?
