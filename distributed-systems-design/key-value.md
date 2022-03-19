@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1491454365147803649?s=20&t=x02dA7LmrZctl5AWPMW71w
+
 Key-value are the most used NoSQL databases in distributed systems design.
 
 Here:
