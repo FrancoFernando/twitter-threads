@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1486731467933683728?s=20&t=x02dA7LmrZctl5AWPMW71w
+
 Relational databases for system design interviews.
 
 Everything you need to know:
