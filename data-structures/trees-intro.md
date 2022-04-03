@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1469682304712859654?s=20&t=b_NKL_-ROHYRF7wgyY0rQw
+
 9️⃣ tree data structures worth knowing:
 
 ➤ binary search tree
