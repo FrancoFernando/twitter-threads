@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1482369263574949893?s=20&t=-2TqgGgp82QQTPZx8zqJDg
+
 Availability is critical for distributed systems.
 
 A downtime of 1 hour:
