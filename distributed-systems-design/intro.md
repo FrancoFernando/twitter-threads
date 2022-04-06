@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1458732399878152192?s=20&t=-2TqgGgp82QQTPZx8zqJDg
+
 Do you want to get a strong knowledge of distributed systems ❓
 
 Are you preparing for system design interviews ❓
