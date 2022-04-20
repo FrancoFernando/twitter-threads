@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1492517617965350912?s=20&t=mJqlpOKosO7kLkkPhxx7Ow
+
 Coding interviews are hard.
 
 But 95% of people don't use a proper framework.
