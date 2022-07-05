@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1493965030156603396?s=20&t=k3FYGxjokFExJkJumq2H9g
+
 🧱 Tries in a nutshell
 
 Tries are advanced data structures used to efficiently represent strings:
