@@ -1,43 +1,62 @@
 https://twitter.com/Franc0Fernand0/status/1461655763277991936?s=20&t=kObvIjelj9qDiu4mJE-FGg
 
-Many people are familiar with the asymptotic analysis of an algorithm.
+Asymptotic and amortized analysis are 2 ways to evaluate the performance of an algorithm.
 
-But not everyone know about AMORTIZED asymptotic analysis.
+Here how they differ: ↓  {1/9}
 
-If you want to understand:
+The amortised analysis of an algorithm measures its average complexity over a large number of executions.
 
-👉 WHAT amortized analysis is
-👉 WHY it is important
-👉 WHEN you should use it
+Let's suppose that an algorithm runs fast in most of the cases, but slow in a very few ones.
 
-Keep reading this thread. Amortised complexity of an algorithm is defined as its average complexity over a large number of executions.
+{2/9}
 
-But what does this exactly mean?
+The asymptotic analysis puts an upper bound on the performances of the algorithm considering the slow cases.
 
-Let's suppose the algorithm runs fast in most of the cases, but slow in a very few ones. The normal asymptotic analysis mainly considers the slow cases, putting an upper bound on the performances of the algorithm.
+Instead, the amortized asymptotic analysis takes into account also that the fast and slow cases occur with a different frequency. 
 
-Instead, the amortized asymptotic analysis takes into account also that the fast and slow cases occur with a different frequency. Considering these frequencies, the amortized asymptotic analysis defines the average performance of the algorithm over a large number of executions.
+{3/9}
 
-This makes sense if you run the algorithm many times and you care the whole set of runs to be efficient and not a particular run. An example will make everything clear.
+It consides these frequencies to define the average performance of the algorithm over a large number of executions.
 
-Let's consider the dynamic array data structure.
+This makes sense if you run the algorithm many times and you care the whole set of runs to be efficient and not a particular run.
 
-When the dynamic array becomes full, it creates a new array with the doubled size of the old array and copies all the items in the old array to the new array. This means that the insert operation in a dynamic array has 2️⃣ different time complexities:
+{4/9}
 
-▶️ O(1) for most of the cases
-▶️ O(n) for the few cases when the array becomes full
+Let's clarify this with the help of the dynamic array data structure.
 
-where n is the array capacity. The amortized analysis comes in handy to express these 2 different time complexites.
+When a dynamic array becomes full, it creates a new array with a double capacity of the old array.
 
-How ?
+All the items in the old array are then copied to the new array.
 
-Describing that once the worst case happened, it won’t happen again for so long that its cost is amortized. In the case of the dynamic array insertion, the worst case happen again only after n/2 items have been added since the previous worst case.
+{5/9}
 
-So adding n items really only takes O(1) because the cost of O(n) is amortized over n/2 insertions.
+This means that the insert operation in a dynamic array has 2 different time complexities:
 
-Other examples coming to my mind are:
+• O(1) for most of the cases
+• O(n) for the few cases when the array gets full
 
-- hash tables for which the O(1) look up is amortized
-- disjoint sets for which the O(N) with path compression and weighted union is amortized
+N here is the array capacity.
 
-But of course the dynamic array is easier to understand.
+{6/9}
+
+The amortized analysis comes in handy to express these 2 different time complexites.
+
+It expresses the fact that once the worst case happens, it won’t happen again for so long that its cost is amortized.
+
+{7/9}
+
+In the case of the dynamic array insertion, the worst case happen again only after n/2 items have been added.
+
+So using the amortized analysis, the insertion of n items takes O(1) because the worst case cost of O(n) is amortized over n/2 operations.
+
+{8/9}
+
+Dynamic arrays are a classical example where applying amortized analysis makes sense.
+
+Other examples you can check are:
+
+• hash tables with amortized O(1) look up 
+
+• disjoint sets with amortized O(n) find and unite operations using path compression and weighted union
+
+{9/9}
