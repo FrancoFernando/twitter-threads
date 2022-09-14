@@ -1,8 +1,8 @@
 https://twitter.com/Franc0Fernand0/status/1461655763277991936?s=20&t=kObvIjelj9qDiu4mJE-FGg
 
-Asymptotic and amortized analysis are 2 ways to evaluate the performance of an algorithm.
+Amortized analysis is an alternative way to evaluate the performance of an algorithm.
 
-Here how they differ: ↓  {1/9}
+How it differs from asymptotic analysis and when it's important: ↓  {1/9}
 
 The amortised analysis of an algorithm measures its average complexity over a large number of executions.
 
