@@ -1,0 +1,72 @@
+https://twitter.com/Franc0Fernand0/status/1520403886858809346?s=20&t=sxYbnZphDGn69nnXLuChIA
+
+Recursion is a scary topic in coding interviews and competitive programming.
+
+But actually it's not so difficult.
+
+The trick is:
+
+1. find the recursive problem category
+2. learn its solution pattern
+
+The 6 categories to solve every problem involving recursion.
+
+[Thread] ↓
+
+1. Iteration
+
+Any problem that can be solved with loops can also be solved using recursion.
+
+Sometimes recursion enable to write a more concise and elegant solution, even if less efficient.
+
+An example is traversing a linked list in reverse order.
+
+2. Subproblems
+
+This pattern focus on solving a smaller version of a problem.
+
+The common strategy to do this is removing something from the input.
+
+Two common examples of problems are:
+
+- find if a string is palindrome
+- find all the ways to climb n stairs
+
+3. Selection 
+
+Some problems can be solved by:
+
+1. Finding all the combinations of input elements 
+2. Selecting the ones which matching a given condition.
+
+An example is finding all the possible ways to interleave 2 strings.
+
+4. Ordering
+
+This pattern is similar to Selection, but here the order how the elements are combined matter.
+
+Such problems can be solved by:
+
+1. Finding all the permutations
+2. Filtering them
+
+An example is finding all the N-digit numbers whose digits sum up to a target number.
+
+5. Divide & Conquer
+
+This pattern focus on splitting the problem into multiple subproblems:
+
+- each subproblem is solved separately
+- the solutions are combined to get the result
+
+An example is finding all the ways to parenthesize an expression.
+
+6. Depth First Search
+
+This pattern find a path in a tree or graph:
+
+- Start at a node
+- Recursively visit each node's neighbor
+- Avoid repeating cycles
+
+An example is finding the path with greatest product in a matrix. From the top left to the bottom right corner.
