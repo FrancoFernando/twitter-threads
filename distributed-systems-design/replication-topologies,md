@@ -1,0 +1,97 @@
+https://twitter.com/Franc0Fernand0/status/1507736388891992064?s=20&t=sxYbnZphDGn69nnXLuChIA
+
+The challenge of replicating data across multiples machines is handling data changes.
+
+Almost 100% of distributed databases use 1 of 3 algorithms:
+
+1. single leader
+2. multi leader
+3. leaderless
+
+The choice is a matter of trade-offs.
+
+Let's check their pros & cons. 
+
+[Thread] ↓
+
+1. Single leader
+
+A single database acts as a leader, receiving and applying all write requests from clients.
+
+All other replicas (followers) can only receive and answer read requests.
+
+The main benefit is that this topology avoids write conflicts.
+
+But there are also some downsides and limitations.
+
+First, it can be used only if the single leader can handle all the writes.
+
+So the application should not be write intensive.
+
+Second, the system latency increase.
+
+The leader can't be close to all the clients and the overall round trip times are higher.
+
+Third, it's necessary to put in place a failover strategy in case the leader goes down.
+
+This is quite hard and requires answering questions like:
+
+- how to decide the new leader ?
+- how to be sure that the leader failed ?
+- how all replicas agree on the new leader ?
+
+2. Multi Leader
+
+More databases act as leaders, receiving and applying the write requests from clients.
+
+The main benefit is that more databases perform writes, being located closer to the clients.
+
+This increase the write throughput and reduce the latency.
+
+The main drawback is that it's necessary to solve conflicts, since multiple replicas accept writes. 
+
+There are 2 types of conflicts.
+
+First, the leaders needs to be in synch preventing causality problems.  
+
+This is usually solved using logical clocks.
+
+Second, all the followers need to apply conflicting writes in the same order.
+
+Some solutions are:
+
+- attach a timestamp to each write and let followers apply the write with highest value
+
+- record the conflicts and write application code to let users manually resolve them
+
+- storing all the conflicting writes and returning them to the clients when they try to read that data. 
+
+The client is then responsible for solving the conflict and write the data back to the database. 
+
+For example, CouchDB does that.
+
+3. Leaderless
+
+Every replica can accept writes and the clients send writes concurrently to many replicas.
+
+As soon the client gets a confirmation from some of them, a write is successful.
+
+The main benefit is that failures are tolerated more easily without failover strategies.
+
+But having no leader handling any kind of synchronization causes other issues.
+
+First of all if some writes fail, the destination replicas will have staled data. 
+
+To deal with this, clients need read data from several replicas concurrently.
+
+The replicas then return their data and a kind of version number as well.
+
+The clients can this number to decide which data to use and which to discard.
+
+But how to synchronize replicas with staled data?
+
+There are 2 common techniques.
+
+READ REPAIR: when a client detects that one of read data is stale, it sends a write request with the correct data to the replica
+
+BACKGROUND PROCESS: a background process take care of periodically synchronize the replicas
