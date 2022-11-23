@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1489264214057254912?s=20&t=BGrVbUNAxcs9JUke08OVsQ
+
 🧱 Arrays in a nutshell 🧱
 
 • intro
