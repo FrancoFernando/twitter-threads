@@ -1,5 +1,7 @@
 https://twitter.com/Franc0Fernand0/status/1467496905471111186?s=20&t=wUtTLoeMZXaddLg-JvLeNw
 
+https://twitter.com/Franc0Fernand0/status/1464190353628618753?s=20&t=5DPULLaZqWAJkaI8c0mgJw
+
 Consistent hashing is a great technique used in countless distributed systems:
 
 - Riak
