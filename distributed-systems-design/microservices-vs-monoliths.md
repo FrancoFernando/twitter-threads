@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1555918106622664704?s=20&t=6dU-uE_Tuf7se1a62DaVhA
+
 Microservices are not necessarily better than monoliths.
 
 Using microservices can be a good choice or not depending on the specific use case.
