@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1525477042971623424?s=20&t=6dU-uE_Tuf7se1a62DaVhA
+
 TCP is one of the most important network protocols.
 
 It enables a reliable communication between 2 processes where data is transmitted:
