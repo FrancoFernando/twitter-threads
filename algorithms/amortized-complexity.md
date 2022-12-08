@@ -1,8 +1,10 @@
-https://twitter.com/Franc0Fernand0/status/1461655763277991936?s=20&t=kObvIjelj9qDiu4mJE-FGg
+[[https://twitter.com/Franc0Fernand0/status/1461655763277991936?s=20&t=kObvIjelj9qDiu4mJE-FGg](https://twitter.com/Franc0Fernand0/status/1570051239882137601?s=20&t=6dU-uE_Tuf7se1a62DaVhA)](https://twitter.com/Franc0Fernand0/status/1570051239882137601?s=20&t=6dU-uE_Tuf7se1a62DaVhA)
 
 Amortized analysis is an alternative way to evaluate the performance of an algorithm.
 
-How it differs from asymptotic analysis and when it's important: ↓  {1/9}
+How it differs from asymptotic analysis and when it's important: ↓ {1/9}
+
+
 
 The amortised analysis of an algorithm measures its average complexity over a large number of executions.
 
@@ -12,7 +14,7 @@ Let's suppose that an algorithm runs fast in most of the cases, but slow in a ve
 
 The asymptotic analysis puts an upper bound on the performances of the algorithm considering the slow cases.
 
-Instead, the amortized asymptotic analysis takes into account also that the fast and slow cases occur with a different frequency. 
+Instead, the amortized asymptotic analysis takes into account also that the fast and slow cases occur with a different frequency.
 
 {3/9}
 
@@ -55,7 +57,7 @@ Dynamic arrays are a classical example where applying amortized analysis makes s
 
 Other examples you can check are:
 
-• hash tables with amortized O(1) look up 
+• hash tables with amortized O(1) look up
 
 • disjoint sets with amortized O(n) find and unite operations using path compression and weighted union
 
