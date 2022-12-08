@@ -1,3 +1,5 @@
+https://twitter.com/Franc0Fernand0/status/1518954376072773641?s=20&t=6dU-uE_Tuf7se1a62DaVhA
+
 C# provides many collection interfaces:
 
 • IEnumerable
