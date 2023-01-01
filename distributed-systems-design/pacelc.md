@@ -1,53 +1,53 @@
 https://twitter.com/Franc0Fernand0/status/1527289983039483904?s=20&t=6dU-uE_Tuf7se1a62DaVhA
 
-There are 2 main trade-offs in distributed systems:
+The PACELC theorem describes 2 main trade-offs in distributed systems:
 
-1. availability vs consistency
+- availability vs consistency
 
-2. consistency vs latency
+- consistency vs latency
 
-The PACELC theorem describes both.
+Here is the theorem and how to interpret it:
 
-{1/7}
+{1/6} ↓
 
+The theorem has 2 parts:
 
+"In case of network partitions (P), it is necessary to choose availability (A) or consistency (C)"
 
-Let's consider as example a single leader configuration of nodes.
+"else (E) in case of no  partitions, it is necessary to choose latency (L) or consistency (C)"
 
-The leader is responsible for all the read and write operations to guarantee consistency.
+{2/6}
 
-The followers replicate the master to guarantee availability and tolerance to failures.
+To understand the theorem, consider a cluster of machines with a single leader.
 
-{2/7}
+The leader executes all write operations, ensuring consistency.
 
-The 1st part of the theorem says that:
+The other machines are replicas that execute reads, ensuring availability and fault tolerance. 
 
-"In case of network partitions (P) it is necessary to choose availability (A) or consistency (C)"
+{3/6}
 
-Indeed, if the leader is not reachable because of a network partition there are 2 options.
+If the leader is not reachable because of a network partition, there are 2 possibilities:
 
-{3/7} keep availability, allowing clients to read from followers that are potentially not in synch
+1. keep availability, allowing the clients to read from replicas potentially not in synch
 
-2. keep consistency, letting the operations that can't reach the leader fail
+2. keep consistency, letting fail all the read operations that can't reach the leader
 
-{4/7}
+{4/6}
 
-The 2nd part of the theorem says that:
+But even in the case of no network partitions, there is a further consideration.
 
-"else (E) in case of no network partitions it is necessary to choose latency (L) or consistency (C)"
+Before executing a write operation, the leader must check its role with a majority of replicas.
 
-Indeed, to guarantee consistency the leader needs to check its role with a majority of followers before serving a request.
+This is because it might not be the leader anymore by the time it executes a write.
 
-{5/7}
+{5/6}
 
-This is because by the time the leader receive a request, it might be no longer the leader.
+And the system is consistent only if the machine executing a write operation is the leader.
 
-And if it were to serve the request without being leader, the system wouldn't be anymore consistent.
+So there are 2 options:
 
-So there are 2 options.
+1. keep consistency, allowing the leader to check its role 
 
-{6/7} keep consistency, allowing the leader to confirm is role with the followers
+2. keep low latency, avoiding this time-consuming check
 
-2. keep low latency, avoiding this time consuming confirmation step.
-
-{7/7}
+{6/6}
