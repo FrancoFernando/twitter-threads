@@ -1,86 +1,83 @@
-https://twitter.com/Franc0Fernand0/status/1467496905471111186?s=20&t=wUtTLoeMZXaddLg-JvLeNw
+https://twitter.com/Franc0Fernand0/status/1606668322375962625?s=20&t=mRgJemXU58N1xIakXxwrLQ
 
-https://twitter.com/Franc0Fernand0/status/1464190353628618753?s=20&t=5DPULLaZqWAJkaI8c0mgJw
+Rendezvous hashing is a great way to implement hashing in distributed systems.
 
-Consistent hashing is a great technique used in countless distributed systems:
+How it works and how it compares to consistent hashing:
 
-- Riak
-- Cassandra
-- Couchbase
-- Amazon Dynamo
+{1/9} ↓
 
-I already dedicated a thread to it.
+Hashing is commonly used in distributed systems to map keys to servers.
 
-But some of you found the concepts hard to digest.
+Keys are typically sharded data or cached client requests.
 
-Especially virtual nodes.
+Ideally, the mapping has 2 properties:
 
-I'll make everything clear 🧵👇
+• adding/removing a server is not expensive 
+
+• keys are balanced in number between servers
+
+{2/9}
+
+The essential idea of rendezvous hashing is:
+
+• calculate a ranking of all servers for each key
+
+• map each key to the server with the highest ranking
+
+• maintain the mapping above while adding and removing servers
+
+{3/9}
+
+A simple process is used to calculate the ranking:
+
+• each key is hashed together with each server
+
+• the server having the highest hash value is assigned to the key
+
+{4/9}
+
+Only the keys for which a server S has the highest ranking are remapped if S is added or removed.
+
+If S is removed, the keys assigned to S are remapped to the server with 2nd highest ranking.
+
+If S is added, the keys for which S has the highest ranking are remapped to S.
+
+{5/9}
+
+Typically, rendezvous hashing requires O(N) time to calculate the hash values for each key.
+
+But there is a variant (the skeleton-based) that can achieve O(logN) time.
+
+No additional space is required since each key's ranking is calculated on the fly.
+
+{6/9}
+
+It's interesting to compare the performances of rendezvous and consistent hashing.
+
+Consistent has a query time of O(log(N)) for a key.
+
+Rendezvous has a query time of O(N) that can reach O(log(N)).
+
+N is larger for consistent hashing if it uses virtual nodes.
+
+{7/9}
+
+Consistent hashing requires memory to store hash values and mappings, while rendezvous does not.
+
+Consistent hashing requires only a hash computation per key, while rendezvous requires N.
+
+Rendezvous natively supports server replication without introducing virtual nodes.
+
+{8/9}
+
+All this makes rendezvous hashing a good candidate if:
+
+• the cluster of servers is small
+
+• the cluster is large but the memory footprint needs to be low
+
+{9/9}
 
 
 
-A preliminary remark.
 
-If you missed the first thread AND
-
-if you're not familiar with the use of hashing in distributed systems
-
-here is the link to it
-
-
-Problem definition
-
-We have a set of servers and we want to map keys (data or requests) to these servers.
-
-The mapping should be such that:
-
-1️⃣ keys are balanced in number between servers
-2️⃣ adding/removing server is computationally cheap
-
-Solution
-
-Consistent hashing meets the above requirements.
-
-The key idea is considering the space of possible hash values circular instead of linear.
-
-We hash servers and keys to place them on that circle.
-
-Then we assign each key to the first server in clockwise direction. Why is good?
-
-It satisfy requirement 2️⃣.
-
-If we add a server we need to remap only the keys that are placed between the previous server in the circle and the new one.
-
-If we remove a server, all the keys stored on the that server are assigned the next one on the circle. Why is not yet optimal ?
-
-It not satisfy requirement 1️⃣.
-
-Why?
-
-First, the keys usually are not uniformely distributed over the circle.
-
-Second, adding and removing servers makes the keys distribution even more skewed towards some servers. Virtual nodes to the rescue
-
-Virtual nodes are just placeholders for the servers placed over the circle.
-
-Insted of having only N servers we have now N*V servers over the circle, where V is the number of placeholders for each server.
-
-Why this help ? Because the circle is divided into multiple smaller ranges and the key distribution becomes more uniform.
-
-The higher is the number of virtual nodes, tho most uniform is the key distribution. Implementation
-
-Instead one hash function for each server, we use multiple functions: one for each virtual node.
-
-A dedicated hash table will then map each virtual node to the corresponding physical server so that we can retrieve the server to which each key is assigned. Key - Server assignment
-
-Given the hash value for a key, the assignment of the key to the closest clockwise virtual node on the circle using binary search.
-
-The correspondence between the vnode and the physical server can be stored on a dedicated hash table. Advantages
-
-Virtual nodes not only help to uniformely distribute the keys, but bring also the following advantages.
-
-▶️ keys reassignments is faster because after adding or removing servers multiple physical servers are involved instead of one
-
-▶️ virtual nodes can carry physical replicas of a server for fault tolerance
-
-▶️ clusters with heterogeneous servers are more effective, because it is possible to assign a higher number of virtual nodes to powerful servers and a lower number to less powerful servers
