@@ -1,72 +1,74 @@
-https://twitter.com/Franc0Fernand0/status/1520403886858809346?s=20&t=sxYbnZphDGn69nnXLuChIA
+https://twitter.com/Franc0Fernand0/status/1603049395276095490?s=20&t=VtHDVAlWR0fFxQJvbbztog
 
-Recursion is a scary topic in coding interviews and competitive programming.
+Recursion problems are common in coding interviews.
 
-But actually it's not so difficult.
-
-The trick is:
-
-1. find the recursive problem category
-2. learn its solution pattern
-
-The 6 categories to solve every problem involving recursion.
-
-[Thread] ↓
+Here are 6 common categories of recursion problems and their solution patterns: ↓
 
 1. Iteration
 
 Any problem that can be solved with loops can also be solved using recursion.
 
-Sometimes recursion enable to write a more concise and elegant solution, even if less efficient.
+Sometimes recursion provides a more concise and elegant solution, even if less efficient.
 
-An example is traversing a linked list in reverse order.
+Example:
+
+- traversing a linked list in reverse order.
 
 2. Subproblems
 
-This pattern focus on solving a smaller version of a problem.
+This pattern focus on defining and solving a smaller version of a problem.
 
-The common strategy to do this is removing something from the input.
+The standard strategy to do this is removing something from the input.
 
-Two common examples of problems are:
+Examples:
 
-- find if a string is palindrome
+- find if a string is a palindrome
 - find all the ways to climb n stairs
 
-3. Selection 
+2. Subproblems
 
-Some problems can be solved by:
+This pattern focus on defining and solving a smaller version of a problem.
 
-1. Finding all the combinations of input elements 
-2. Selecting the ones which matching a given condition.
+The standard strategy to do this is removing something from the input.
 
-An example is finding all the possible ways to interleave 2 strings.
+Examples:
+
+- find if a string is a palindrome
+- find all the ways to climb n stairs
 
 4. Ordering
 
-This pattern is similar to Selection, but here the order how the elements are combined matter.
+This pattern is similar to Selection, but the order of how the elements are combined matters.
 
 Such problems can be solved by:
 
-1. Finding all the permutations
-2. Filtering them
+• Finding all the permutations
 
-An example is finding all the N-digit numbers whose digits sum up to a target number.
+• Filtering them
+
+Example:
+
+- find all the N-digit numbers whose digits sum up to a target number
 
 5. Divide & Conquer
 
 This pattern focus on splitting the problem into multiple subproblems:
 
-- each subproblem is solved separately
-- the solutions are combined to get the result
+• each subproblem is solved separately
+• the solutions are combined to get the result
 
-An example is finding all the ways to parenthesize an expression.
+Example:
+
+- find all the ways to parenthesize an expression
 
 6. Depth First Search
 
-This pattern find a path in a tree or graph:
+This pattern finds a path in a tree or graph:
 
-- Start at a node
-- Recursively visit each node's neighbor
-- Avoid repeating cycles
+• Start at a node
+• Recursively visit each node's neighbor
+• Avoid repeating cycles
 
-An example is finding the path with greatest product in a matrix. From the top left to the bottom right corner.
+Example:
+
+- find the path with the greatest product in a matrix from the top left to the bottom right corner.
