@@ -1,97 +1,105 @@
-https://twitter.com/Franc0Fernand0/status/1507736388891992064?s=20&t=sxYbnZphDGn69nnXLuChIA
+https://twitter.com/Franc0Fernand0/status/1591447702247657474?s=20&t=VtHDVAlWR0fFxQJvbbztog
 
-The challenge of replicating data across multiples machines is handling data changes.
+There are 3 main databases replication topologies:
 
-Almost 100% of distributed databases use 1 of 3 algorithms:
+• single leader
+• multi leader
+• leaderless
 
-1. single leader
-2. multi leader
-3. leaderless
-
-The choice is a matter of trade-offs.
-
-Let's check their pros & cons. 
-
-[Thread] ↓
+These are their differences and  trade-offs: {1/11}
 
 1. Single leader
 
-A single database acts as a leader, receiving and applying all write requests from clients.
+A single database acts as a leader, receiving and applying all write requests.
 
-All other replicas (followers) can only receive and answer read requests.
+All other replicas (followers) can only receive and handle read requests.
 
-The main benefit is that this topology avoids write conflicts.
+The main benefit of this topology is that it avoids write conflicts.
 
-But there are also some downsides and limitations.
+{2/11}
 
-First, it can be used only if the single leader can handle all the writes.
+But this benefit comes with some downsides.
 
-So the application should not be write intensive.
+1st, it performs poorly with write intensive applications since the leader becomes a bottleneck.
 
-Second, the system latency increase.
+2nd, the system latency increases.
 
 The leader can't be close to all the clients and the overall round trip times are higher.
 
-Third, it's necessary to put in place a failover strategy in case the leader goes down.
+{3/11}
 
-This is quite hard and requires answering questions like:
+3rd, it's necessary to implement a failover strategy in case the leader goes down.
 
-- how to decide the new leader ?
-- how to be sure that the leader failed ?
-- how all replicas agree on the new leader ?
+This is quite hard and requires solving problems like:
+
+- electing a new leader
+- being sure that the leader failed
+- making the replicas agree on the new leader
+
+{4/11}
 
 2. Multi Leader
 
-More databases act as leaders, receiving and applying the write requests from clients.
+More databases act as leaders, receiving and applying the write requests.
 
 The main benefit is that more databases perform writes, being located closer to the clients.
 
-This increase the write throughput and reduce the latency.
+This increases the write throughput and reduce the latency.
 
-The main drawback is that it's necessary to solve conflicts, since multiple replicas accept writes. 
+{5/11}
 
-There are 2 types of conflicts.
+The drawback is that it's necessary to solve write conflicts.
 
-First, the leaders needs to be in synch preventing causality problems.  
-
-This is usually solved using logical clocks.
-
-Second, all the followers need to apply conflicting writes in the same order.
-
-Some solutions are:
+Some possible solutions are:
 
 - attach a timestamp to each write and let followers apply the write with highest value
 
 - record the conflicts and write application code to let users manually resolve them
 
-- storing all the conflicting writes and returning them to the clients when they try to read that data. 
+{6/11}
+
+- store all the conflicting writes and return them to the clients when they try to read that data. 
 
 The client is then responsible for solving the conflict and write the data back to the database. 
 
-For example, CouchDB does that.
+CouchDB follows this last approach.
+
+{7/11}
 
 3. Leaderless
 
-Every replica can accept writes and the clients send writes concurrently to many replicas.
+Each database instance can accept writes and the clients can send writes concurrently.
 
-As soon the client gets a confirmation from some of them, a write is successful.
+As soon a client gets a confirmation from some of the instances, a write is successful.
 
-The main benefit is that failures are tolerated more easily without failover strategies.
+The benefit is that failures are tolerated easily without failover strategies.
+
+{8/11}
 
 But having no leader handling any kind of synchronization causes other issues.
 
-First of all if some writes fail, the destination replicas will have staled data. 
+First of all if some writes fail, the corresponding instances will have staled data. 
 
-To deal with this, clients need read data from several replicas concurrently.
+To deal with this, clients need to read data from several instances concurrently.
 
-The replicas then return their data and a kind of version number as well.
+{9/11}
 
-The clients can this number to decide which data to use and which to discard.
+The instances then return their data with a kind of version number.
 
-But how to synchronize replicas with staled data?
+The clients can use this number to decide which data to keep and which to discard.
+
+But how to update instances having staled data?
+
+{10/11}
 
 There are 2 common techniques.
 
-READ REPAIR: when a client detects that one of read data is stale, it sends a write request with the correct data to the replica
+- read repair: when a client detects that a read data is stale, it sends a write request with the correct data
 
-BACKGROUND PROCESS: a background process take care of periodically synchronize the replicas
+- background process: a background process take care of periodically synchronize all database instances.
+
+{11/11}
+
+
+
+
