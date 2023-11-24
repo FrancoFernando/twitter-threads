@@ -1,3 +1,10 @@
+
+Software engineers engage in code reviews daily.
+
+But most developers can’t recognize a bad code review process. Even when they're right in the middle of one.
+
+Thread: 3 signs of bad code reviews, and how your team can ship faster. 
+
 I recently went again through "Master the Code Review", a course by @curtiseinsmann
 
 The course is really great and I got many useful insights from it.
