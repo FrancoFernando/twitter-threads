@@ -1,3 +1,28 @@
+Imagine Santa Claus asks you to run a service that brings gifts to families.
+
+You want to deliver each gift correctly, but things like traffic or accidents could get in the way.
+
+You can offer Santa Claus three options:
+
+At least once delivery: if you don't receive a call from a family, you assume the gift wasn't delivered and send another. The bad thing is that you might give more gifts than necessary.
+
+At-most-once delivery: you send a gift, but if something goes wrong, you don't redeliver it. The bad thing is that a family might not have a gift.
+
+Exactly-once delivery: you promise that the gift will only come once, no more and no less. 
+
+Distributed systems do not deliver presents but messages over a network.
+
+Anyway, they work pretty much the same way.
+
+The main difference is that they can only use the at-least-once and at-most-once deliveries.
+
+The only way they can get an exactly-once semantic in practice is by simulating it in 2 possible ways:
+
+- implement a deduplicating message logic on the receiver side
+
+- using idempotent messages.
+------------
+
 Distributed systems works because nodes exchange messages over a network.
 
 There are 3 kind of messages delivery semantics between 2 nodes: 
