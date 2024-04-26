@@ -18,6 +18,7 @@ The easiest way to find if a number n is prime is checking if it is divisible by
 
 We can use the modulo operator (%) to check for divisibility.
 
+![image](https://github.com/FrancoFernando/twitter-threads/assets/69932537/bd5ecf3f-1736-4efd-805e-edb83ac01d04)
 
 
 The previous approach works, but it can be optimized.
@@ -32,6 +33,7 @@ If n was divisible by a number greater than m = sqrt(n), then the result of that
 
 But in that case we would have already found that number 😀
 
+![image](https://github.com/FrancoFernando/twitter-threads/assets/69932537/2745ac07-a68b-4e7c-b733-650cbc17eb43)
 
 
 How we can calculate all prime numbers within a range?
@@ -45,4 +47,6 @@ The method begins by assuming that all numbers are prime.
 It then takes the first prime number and removes all its multiples.
 
 The same technique is then applied to the next prime number.
+
+![image](https://github.com/FrancoFernando/twitter-threads/assets/69932537/cab0075d-c280-4cfa-a12a-adf304b25065)
 
