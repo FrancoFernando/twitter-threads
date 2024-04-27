@@ -1,6 +1,8 @@
 https://twitter.com/Franc0Fernand0/status/1429003269951692801?s=20&t=kObvIjelj9qDiu4mJE-FGg
 
-systems?
+A cache is a hardware or software component that enables a faster access to data. 
+
+Do you want to know more about caching and its application in distributed systems?
 
 Check out this thread 🧵👇
 
